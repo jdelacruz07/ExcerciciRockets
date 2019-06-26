@@ -6,25 +6,28 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		ArrayList<Rocket> list = new ArrayList<>();
+		
+		String idRocket = "32WESSDS";
+		int numberPropulsor = 3;
+		int idPropulsor = 123456789;
+		list.add(ingresaDatos(idRocket, numberPropulsor));
 
-		String idRocket1 = "32WESSDS";
-		int idPropulsor1 = 123456789;
-		int propulsor1 = 3;
-		ingresaDatos(idRocket1, idPropulsor1, propulsor1);
-
-		String idRocket2 = "LDSFJA32";
-		int idPropulsor2 = 987654321;
-		int propulsor2 = 6;
-		ingresaDatos(idRocket2, idPropulsor2, propulsor2);
+		idRocket = "LDSFJA32";
+		numberPropulsor = 6;
+		idPropulsor = 987654321;
+		list.add(ingresaDatos(idRocket, numberPropulsor));
 
 		
-//		System.out.println();
-//		System.out.println("Propulsor 1 " + rocket.idPropulsor + " No propulsores " + rocket.propulsor);
+//		System.out.println(list.size());
 		
+		for (Rocket rocket : list) {
+			System.out.println(rocket.idRocket + " " + rocket.numberPropulsor);
+		};
 
 	}
 
-	static ArrayList ingresaDatos(String idRocket, int idPropulsor, int propulsor) {
+	static Rocket ingresaDatos(String idRocket, int numberPropulsor) {
 		int countDigit = 0;
 		
 		do {
@@ -32,15 +35,10 @@ public class Main {
 //			Scanner sc = new Scanner(System.in);
 //			idRocket1 = sc.next();
 			countDigit = idRocket.length();
-			System.out.println(countDigit);
+//			System.out.println(countDigit);
 		} while (countDigit != 8);
-		Rocket rocket = new Rocket(idRocket, idPropulsor, propulsor);
-		System.out.println("Id rocket " + " " + rocket.idRocket);
-		System.out.println("Propulsor 1 " + rocket.idPropulsor + " No propulsores " + rocket.propulsor);
-		ArrayList<Rocket> list = new ArrayList<>();
-		list.add(rocket);
-		System.out.println(list);
-		return list;
+		Rocket rocket = new Rocket(idRocket, numberPropulsor);
+		return rocket;
 	}
 
 }
