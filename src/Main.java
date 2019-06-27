@@ -13,32 +13,26 @@ public class Main {
 		int numberPropulsor = 3;
 		int idPropulsor = 123456789;
 		int[] power1 = { 10, 30, 80 };
-		System.out.println(power1);
 		if (rocket.verifyIdRocket(idRocket) == true)
 			rockets.addAll(doRocket(idRocket, numberPropulsor));
 		else {
 			System.out.println("La longitud es incorrecta ");
 		}
+		
 		idRocket = "LDSFJA32";
 		numberPropulsor = 6;
 		idPropulsor = 987654321;
 		int[] power2 = { 30, 40, 50, 50, 30, 10 };
-
 		if (rocket.verifyIdRocket(idRocket) == true)
 			rockets.addAll(doRocket(idRocket, numberPropulsor));
 		else {
 			System.out.println("La longitud es incorrecta ");
 		}
 
-		// System.out.println(rockets.size());
-		for (Rocket rocketss : rockets) {
-			System.out.print(rocketss.idRocket + ":" + " " + rocketss.numberPropulsor + " ");
-			for (int i : power1) {
-				System.out.print(i + ",");
-			}
-			System.out.println(" ");
-		}
+		System.out.println(rockets.size());
+		showdata(rockets);
 
+	
 	}
 
 	public static ArrayList<Rocket> doRocket(String idRocket, int numberPropulsor) {
@@ -47,5 +41,26 @@ public class Main {
 		rockets.add(rocket);
 		return rockets;
 	}
-
+	
+	public static void showdata(ArrayList<Rocket> rockets) {
+		Rocket rocketzero = new Rocket();
+		int[] power1 = { 10, 30, 80 };
+		int[] power2 = { 30, 40, 50, 50, 30, 10 };
+		
+		rocketzero = rockets.get(0);
+		System.out.print(rocketzero.idRocket + " "+ rocketzero.numberPropulsor+ " ");
+		for (int i : power1) {
+			System.out.print(i);
+			System.out.print(" ");
+		}
+		System.out.println(" ");
+		
+		rocketzero = rockets.get(1);
+		System.out.print(rocketzero.idRocket + " "+ rocketzero.numberPropulsor+ " ");
+		for (int i : power2) {
+			System.out.print(i);
+			System.out.print(" ");
+		}
+		
+	}
 }
