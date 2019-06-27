@@ -14,6 +14,17 @@ public class Rocket {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public boolean verifyIdRocket (String idRocket) {
+		boolean isCorrect = false;
+		int countDigit = 0;
+		countDigit = idRocket.length();
+		if (countDigit == 8) {
+			isCorrect = true;
+		} else {
+			isCorrect = false;
+			}
+		return isCorrect;
+	}
 	
 	
 }
