@@ -6,6 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
 		Rocket rocket = new Rocket();
 		ArrayList<Rocket> rockets = new ArrayList<>();
 
@@ -36,30 +37,38 @@ public class Main {
 
 		rocket = rockets.get(1);
 		showdata(rocket, power2);
-		System.out.println("Primera, segunda y tercera parte lista ////////////////");
+		
+		System.out.println("/////////////////////////////////////////////////////////////////////////////////");
 
 		Propulsor propulsor = new Propulsor();
 		int powerLength = power1.length;
-		System.out.println("Tamaño del arreglo de la potencia "+ powerLength);
+		System.out.println("Tamaño del arreglo de la potencia es "+ powerLength);
+		System.out.println("Cuantas veces quieres acelerar?");
+		
 		
 		ArrayList<Integer> velocity = new ArrayList<>();
-		for (int powerMax : power1) {
-			System.out.println("Primer cohete acelera hasta "+ powerMax);
-			int powerActually =	propulsor.aceelerate(powerMax);
-			System.out.println("Potencia Actual " + powerActually);
-			velocity.add(powerActually);
-			
-			System.out.println("Tamaño del arregloooooooooooooooo " + velocity.size() );
-			System.out.println("Velocidad  ......" + velocity);
-			
-		for (int i : velocity) {
+		int powerReal = 0 ;
+		int timesAccelerate = sc.nextInt();
+		timesAccelerate = 10 * (timesAccelerate-1);
+		while (powerReal <= timesAccelerate) {
+			for (int powerMax : power1) {
+				System.out.println("Primer cohete acelera hasta "+ powerMax);
+				int powerCount =	propulsor.aceelerate(powerMax, powerReal);
+				velocity.add(powerCount);
+				System.out.println("Velocidad  ......" + velocity);
+			}
 			int power = 0 ;
-			power = power + i;
-			float powerActually2 = (float)  Math.sqrt(power);
-			System.out.println("Velocidad " + powerActually2 );
-		} 
+			float powerActually2 = 0;
+			for (int i : velocity) {
+				power = power + i;
+				powerActually2 = (float)  Math.sqrt(power);
+			} 
+			System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2 );
+			velocity.clear();
+			powerReal = powerReal + 10;
+			
 		}
-		System.out.println("///////////////////////////////////////////////////");
+		System.out.println("/////////////////////////////////////////////////////////////////////////////////");
 		 
 		for (int powerMax : power1) {
 			System.out.println("Primer cohete desacelera desde "+ powerMax);
