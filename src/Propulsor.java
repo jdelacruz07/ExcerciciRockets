@@ -2,33 +2,35 @@
 public class Propulsor {
 	int powerPropulsor;
 	
-	public void aceelerate(int powerMax) {
-		int power = 0;
-		while (power >= 0 && power <= powerMax) {
-			if (power >= 0 && power <= powerMax  ){
-				power +=10;
-				System.out.println("Potencia actual " + power);
+	public int aceelerate(int powerMax) {
+		powerPropulsor = 0;
+//		while (powerPropulsor >= 0 && powerPropulsor < powerMax) {
+			if (powerPropulsor >= 0 && powerPropulsor <= powerMax  ){
+				powerPropulsor +=10;
+	//			System.out.println("Potencia actual " + powerPropulsor);
 			} else {
-				System.out.println("no more power ....... no power" + powerMax );
+	//			System.out.println("no more power ....... no power" + powerMax );
 			}
 		
-		}
+//		}
 		System.out.println("no more power ..........." + powerMax  );
+		return powerPropulsor;
 
 	}
 	
-	public void brake(int powerNow) {
-		int power = 10;
-		while ( powerNow > 0 ) {
-			if (powerNow >= 10 ){
-				powerNow = powerNow - 10;
-				System.out.println("Potencia actual " + powerNow);
+	public int brake(int powerMax) {
+		powerPropulsor = powerMax;
+		while ( powerPropulsor >= 10 ) {
+			if (powerPropulsor >= 10 ){
+				powerPropulsor = powerPropulsor - 10;
+		//		System.out.println("Potencia actual " + powerPropulsor);
 			} else {
-				System.out.println("ha llegado a la potencia minima  ???????????????" + powerNow );
+		//		System.out.println("ha llegado a la potencia minima  ???????????????" + powerPropulsor );
 			}
 			
 		}
-		System.out.println("potencia minima   ???????????????" + powerNow  );
+		System.out.println("potencia minima   ???????????????" + powerPropulsor  );
+		return powerPropulsor;
 		
 	}
 }
