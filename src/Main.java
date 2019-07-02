@@ -38,37 +38,16 @@ public class Main {
 		rocket = rockets.get(1);
 		showdata(rocket, power2);
 		
-		System.out.println("/////////////////////////////////////////////////////////////////////////////////");
+		System.out.println("//////                   ACELERA                    ///////////");
 
 		Propulsor propulsor = new Propulsor();
-		int powerLength = power1.length;
-		System.out.println("Tamaño del arreglo de la potencia es "+ powerLength);
 		System.out.println("Cuantas veces quieres acelerar?");
+		int times = sc.nextInt();
 		
+		Propulsor.timesAccelerate(power1, times);
+
 		
-		ArrayList<Integer> velocity = new ArrayList<>();
-		int powerReal = 0 ;
-		int timesAccelerate = sc.nextInt();
-		timesAccelerate = 10 * (timesAccelerate-1);
-		while (powerReal <= timesAccelerate) {
-			for (int powerMax : power1) {
-				System.out.println("Primer cohete acelera hasta "+ powerMax);
-				int powerCount =	propulsor.aceelerate(powerMax, powerReal);
-				velocity.add(powerCount);
-				System.out.println("Velocidad  ......" + velocity);
-			}
-			int power = 0 ;
-			float powerActually2 = 0;
-			for (int i : velocity) {
-				power = power + i;
-				powerActually2 = (float)  Math.sqrt(power);
-			} 
-			System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2 );
-			velocity.clear();
-			powerReal = powerReal + 10;
-			
-		}
-		System.out.println("/////////////////////////////////////////////////////////////////////////////////");
+		System.out.println("///////                  FRENA                       ////////////////////////////");
 		 
 		for (int powerMax : power1) {
 			System.out.println("Primer cohete desacelera desde "+ powerMax);
@@ -78,7 +57,6 @@ public class Main {
 
 		float velocidad = (float) Math.sqrt(10+30+80);
 		System.out.println(velocidad);
-		
 		
 	
 	}
@@ -100,12 +78,6 @@ public class Main {
 		}
 		
 		System.out.println(" ");
-
-
-	
-
-		
-	
 		
 	}
 }

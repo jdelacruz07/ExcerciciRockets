@@ -1,12 +1,36 @@
+import java.util.ArrayList;
 
 public class Propulsor {
-	int powerPropulsor;
+	static int powerPropulsor;
 	
-	public int aceelerate(int powerMax, int powerReal) {
+	public static void timesAccelerate(int[] power, int times) {
+		
+		ArrayList<Integer> velocity = new ArrayList<>();
+		int powerReal = 10 ;
+		times = 10 * (times);
+		while (powerReal <= times) {
+			for (int powerMax : power) {
+				System.out.println("Primer cohete acelera hasta "+ powerMax);
+				int powerCount = aceelerate(powerMax, powerReal);
+				velocity.add(powerCount);
+				System.out.println("Potencia Actual  ......" + velocity);
+			}
+			
+			Rocket.giveVelocity (velocity);
+			
+			velocity.clear();
+			powerReal = powerReal + 10;
+			
+		}
+		
+	}
+	
+	
+	
+	
+	public static int aceelerate(int powerMax, int powerReal) {
 		powerPropulsor = powerReal;
-//		while (powerPropulsor >= 0 && powerPropulsor < powerMax) {
 			if (powerPropulsor >= 0 && powerPropulsor <= powerMax ){
-		//		powerPropulsor = powerPropulsor + 10; 
 				System.out.println("Potencia actual " + powerPropulsor);
 				powerPropulsor = powerReal;
 				
@@ -14,8 +38,6 @@ public class Propulsor {
 				System.out.println("no more power ....... no power" + powerMax );
 				powerPropulsor = powerMax;
 			}
-//		}
-//		System.out.println("no more power ..........." + powerMax  );
 		
 		return powerPropulsor;
 

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Rocket {
 
@@ -13,6 +14,23 @@ public class Rocket {
 	public Rocket() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public static void giveVelocity(ArrayList<Integer> velocity) {
+		
+		int power = 0 ;
+		float powerActually2 = 0;
+		for (int i : velocity) {
+			power = power + i;
+			powerActually2 = (float)  Math.sqrt(power);
+		} 
+		System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2 );
+		
+		
+//		return powerActually2;
+		
+	}
+	
+	
 	
 	public boolean verifyIdRocket (String idRocket) {
 		boolean isCorrect = false;
