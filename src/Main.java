@@ -19,7 +19,7 @@ public class Main {
 		else {
 			System.out.println("La longitud es incorrecta ");
 		}
-		
+
 		idRocket = "LDSFJA32";
 		numberPropulsor = 6;
 		idPropulsor = 987654321;
@@ -37,28 +37,50 @@ public class Main {
 
 		rocket = rockets.get(1);
 		showdata(rocket, power2);
-		
+
 		System.out.println("//////                   ACELERA                    ///////////");
 
 		Propulsor propulsor = new Propulsor();
 		System.out.println("Cuantas veces quieres acelerar?");
 		int times = sc.nextInt();
-		
-		Propulsor.timesAccelerate(power1, times);
 
-		
+		ArrayList<Integer> velocityBackup = Propulsor.timesAccelerate(power1, times);
+		ArrayList<Integer> velocityBackup2 = new ArrayList<>();
+		ArrayList<Integer> velocityBackup3 = new ArrayList<>();
+		ArrayList<Integer> velocityBackup4 = new ArrayList<>();
+
 		System.out.println("///////                  FRENA                       ////////////////////////////");
-		 
-		for (int powerMax : power1) {
-			System.out.println("Primer cohete desacelera desde "+ powerMax);
-			int powerActually = propulsor.brake(powerMax);
-			System.out.println("Potencia Actual " + powerActually);
-		}
-
-		float velocidad = (float) Math.sqrt(10+30+80);
-		System.out.println(velocidad);
 		
-	
+		System.out.println(velocityBackup);
+		for (int powerMax : velocityBackup) {
+			System.out.println("Primer cohete desacelera desde " + powerMax);
+			int powerActually = propulsor.brake(powerMax);
+			velocityBackup2.add(powerActually);
+		//	System.out.println("Potencia Actual " + powerActually);
+			System.out.println("Backuop22222222222 " + velocityBackup2);
+		}
+		
+		System.out.println("Backuop22222222222 " + velocityBackup2);
+		for (int powerMax : velocityBackup2) {
+			System.out.println("Primer cohete desacelera desde " + powerMax);
+			int powerActually = propulsor.brake(powerMax);
+			velocityBackup3.add(powerActually);
+		//	System.out.println("Potencia Actual " + powerActually);
+			System.out.println(velocityBackup3);
+		}
+		for (int powerMax : velocityBackup3) {
+			System.out.println("Primer cohete desacelera desde " + powerMax);
+			int powerActually = propulsor.brake(powerMax);
+			velocityBackup4.add(powerActually);
+		//	System.out.println("Potencia Actual " + powerActually);
+			System.out.println(velocityBackup4);
+		}
+		
+		
+
+		float velocidad = (float) Math.sqrt(10 + 30 + 80);
+		System.out.println(velocidad);
+
 	}
 
 	public static ArrayList<Rocket> doRocket(String idRocket, int numberPropulsor) {
@@ -67,17 +89,17 @@ public class Main {
 		rockets.add(rocket);
 		return rockets;
 	}
-	
+
 	public static void showdata(Rocket rocket, int[] power) {
 		Rocket rocketzero = new Rocket();
-		
-		System.out.print(rocket.idRocket + " "+ rocket.numberPropulsor +  " " );
+
+		System.out.print(rocket.idRocket + " " + rocket.numberPropulsor + " ");
 		for (int i : power) {
 			System.out.print(i);
 			System.out.print(" ");
 		}
-		
+
 		System.out.println(" ");
-		
+
 	}
 }
