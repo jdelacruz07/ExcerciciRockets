@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+	static ArrayList<Integer> velocityBackup = new ArrayList();
+	static int times;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -13,7 +15,7 @@ public class Main {
 		String idRocket = "32WESSDS";
 		int numberPropulsor = 3;
 		int idPropulsor = 123456789;
-		int[] power1 = { 10, 30, 80 };
+		int[] power1 = { 30, 30, 80 };
 		if (rocket.verifyIdRocket(idRocket) == true)
 			rockets.addAll(doRocket(idRocket, numberPropulsor));
 		else {
@@ -42,9 +44,42 @@ public class Main {
 
 		Propulsor propulsor = new Propulsor();
 		System.out.println("Cuantas veces quieres acelerar?");
-		int times = sc.nextInt();
+		times = sc.nextInt();
+		
+		
+		(new Thread(new HelloRunnable())).start();
+		Runnable r1 = new Runnable()
 
-		ArrayList<Integer> velocityBackup = Propulsor.timesAccelerate(power2, times);
+		{
+			@Override
+			public void run() {
+				// perform some work inside the thread
+				velocityBackup = Propulsor.timesAccelerate(power1[0], times);
+				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
+			}
+		};
+//		Runnable r2 = new Runnable() {
+//			@Override
+//			public void run() {
+//				// perform some work inside the thread
+//				velocityBackup = Propulsor.timesAccelerate(power1[1],times);
+//				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
+//			}
+//		};
+//		Runnable r3 = new Runnable() {
+//			@Override
+//			public void run() {
+//				// perform some work inside the thread
+//				velocityBackup = Propulsor.timesAccelerate(power1[2],times);
+//				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
+//			}
+//		};
+		Thread t1 = new Thread(r1, "Thread t1");
+//		Thread t2 = new Thread(r2, "Thread t2");
+//		Thread t3 = new Thread(r3, "Thread t3");
+		t1.start();
+//		t2.start();
+//		t3.start();
 
 		System.out.println("///////                  FRENA                       ////////////////////////////");
 
