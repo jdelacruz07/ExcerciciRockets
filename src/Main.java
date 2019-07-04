@@ -44,39 +44,26 @@ public class Main {
 		System.out.println("Cuantas veces quieres acelerar?");
 		int times = sc.nextInt();
 
-		ArrayList<Integer> velocityBackup = Propulsor.timesAccelerate(power1, times);
-		ArrayList<Integer> velocityBackup2 = new ArrayList<>();
-		ArrayList<Integer> velocityBackup3 = new ArrayList<>();
-		ArrayList<Integer> velocityBackup4 = new ArrayList<>();
+		ArrayList<Integer> velocityBackup = Propulsor.timesAccelerate(power2, times);
 
 		System.out.println("///////                  FRENA                       ////////////////////////////");
-		
-		System.out.println(velocityBackup);
-		for (int powerMax : velocityBackup) {
-			System.out.println("Primer cohete desacelera desde " + powerMax);
-			int powerActually = propulsor.brake(powerMax);
-			velocityBackup2.add(powerActually);
-		//	System.out.println("Potencia Actual " + powerActually);
-			System.out.println("Backuop22222222222 " + velocityBackup2);
+
+		System.out.println("Cuantas veces quieres desacelerar?");
+		times = sc.nextInt();
+
+		ArrayList<Integer> velocityBackup2 = new ArrayList<>();
+		System.out.println("Entrada " + velocityBackup);
+
+		for (int i = 0; i < times; i++) {
+			for (int powerMax : velocityBackup) {
+				int powerActually = propulsor.brake(powerMax);
+				velocityBackup2.add(powerActually);
+			}
+			System.out.println("Salida " + velocityBackup2);
+			velocityBackup.clear();
+			velocityBackup.addAll(velocityBackup2);
+			velocityBackup2.clear();
 		}
-		
-		System.out.println("Backuop22222222222 " + velocityBackup2);
-		for (int powerMax : velocityBackup2) {
-			System.out.println("Primer cohete desacelera desde " + powerMax);
-			int powerActually = propulsor.brake(powerMax);
-			velocityBackup3.add(powerActually);
-		//	System.out.println("Potencia Actual " + powerActually);
-			System.out.println(velocityBackup3);
-		}
-		for (int powerMax : velocityBackup3) {
-			System.out.println("Primer cohete desacelera desde " + powerMax);
-			int powerActually = propulsor.brake(powerMax);
-			velocityBackup4.add(powerActually);
-		//	System.out.println("Potencia Actual " + powerActually);
-			System.out.println(velocityBackup4);
-		}
-		
-		
 
 		float velocidad = (float) Math.sqrt(10 + 30 + 80);
 		System.out.println(velocidad);

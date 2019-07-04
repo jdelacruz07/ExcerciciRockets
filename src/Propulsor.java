@@ -52,7 +52,6 @@ public class Propulsor {
 				 powerPropulsor = 0;
 			}
 
-	//	System.out.println("potencia minima   ???????????????" + powerPropulsor);
 		return powerPropulsor;
 
 	}
