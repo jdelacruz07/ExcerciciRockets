@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Main {
 
 	static ArrayList<Integer> velocityBackup;
+	static ArrayList<Integer> velocityBackup2;
+	static ArrayList<Integer> velocityBackup3;
 	static int times;
 
 	public static void main(String[] args) throws InterruptedException {
@@ -58,32 +60,67 @@ public class Main {
                 System.out.println("Hello from "+
                         Thread.currentThread().getName()
                         + " NOT USING LAMBDA");
-                velocityBackup = Propulsor.timesAccelerate(power1, times);
+                velocityBackup = Propulsor.timesAccelerate(power1[0], times);
                 System.out.println("Salida --> 1 " + velocityBackup);
             }
         };
+        Runnable r2 = new Runnable()
+        {
+        	@Override
+        	public void run()
+        	{
+        		//perform some work inside the thread
+        		System.out.println("Hello from "+
+        				Thread.currentThread().getName()
+        				+ " NOT USING LAMBDA");
+        		velocityBackup2 = Propulsor.timesAccelerate(power1[1], times);
+        		System.out.println("Salida --> 2 " + velocityBackup);
+        	}
+        };
+        Runnable r3 = new Runnable()
+        {
+        	@Override
+        	public void run()
+        	{
+        		//perform some work inside the thread
+        		System.out.println("Hello from "+
+        				Thread.currentThread().getName()
+        				+ " NOT USING LAMBDA");
+        		velocityBackup3 = Propulsor.timesAccelerate(power1[2], times);
+        		System.out.println("Salida --> 3 " + velocityBackup);
+        	}
+        };
 
         Thread t1 = new Thread(r1, "Thread t1");
+        Thread t2 = new Thread(r2, "Thread t2");
+        Thread t3 = new Thread(r3, "Thread t3");
         t1.start();
+        t2.start();
+        t3.start();
         
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+        
+        ArrayList<Integer> velocityBackupTotal = new ArrayList();
+        velocityBackupTotal.add(velocityBackup.get(0));
+        velocityBackupTotal.add(velocityBackup2.get(0));
+        velocityBackupTotal.add(velocityBackup3.get(0));
         
 		System.out.println("///////                  FRENA                       ////////////////////////////");
 
-		System.out.println("Entrada " + velocityBackup);
+		System.out.println("Entrada " + velocityBackupTotal);
 		System.out.println("Cuantas veces quieres desacelerar?");
 		times = sc.nextInt();
 
 		ArrayList<Integer> velocityBackup2 = new ArrayList<>();
 
 		for (int i = 0; i < times; i++) {
-			for (int powerMax : velocityBackup) {
+			for (int powerMax : velocityBackupTotal) {
 				int powerActually = propulsor.brake(powerMax);
 				velocityBackup2.add(powerActually);
 			}
 			System.out.println("Salida " + velocityBackup2);
-			velocityBackup.clear();
-			velocityBackup.addAll(velocityBackup2);
+			velocityBackupTotal.clear();
+			velocityBackupTotal.addAll(velocityBackup2);
 			velocityBackup2.clear();
 		}
 

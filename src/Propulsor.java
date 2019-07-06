@@ -3,21 +3,20 @@ import java.util.ArrayList;
 public class Propulsor {
 	static int powerPropulsor;
 
-	public static ArrayList<Integer> timesAccelerate(int[] power, int times) {
+	public static ArrayList<Integer> timesAccelerate(int powerMax, int times) {
 
 		ArrayList<Integer> velocity = new ArrayList<>();
 		ArrayList<Integer> velocityBackup = new ArrayList<>();
 		int powerReal = 10;
 		times = 10 * (times);
 		while (powerReal <= times) {
-			for (int powerMax : power) {
+//			for (int powerMax : power1) {
 				velocityBackup.clear();
-//				System.out.println("Primer cohete acelera hasta "+ powerMax);
 				int powerCount = aceelerate(powerMax, powerReal);
 				velocity.add(powerCount);
 				velocityBackup.addAll(velocity);
 				System.out.println("Potencia Actual  ......" + velocity);
-			}
+//			}
 
 			Rocket.giveVelocity(velocity);
 			velocity.clear();
