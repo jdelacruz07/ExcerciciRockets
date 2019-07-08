@@ -10,13 +10,11 @@ public class Propulsor {
 		int powerReal = 10;
 		times = 10 * (times);
 		while (powerReal <= times) {
-//			for (int powerMax : power1) {
-				velocityBackup.clear();
-				int powerCount = aceelerate(powerMax, powerReal);
-				velocity.add(powerCount);
-				velocityBackup.addAll(velocity);
-				System.out.println("Potencia Actual  ......" + velocity);
-//			}
+			velocityBackup.clear();
+			int powerCount = aceelerate(powerMax, powerReal);
+			velocity.add(powerCount);
+			velocityBackup.addAll(velocity);
+//			System.out.println("Potencia Actual  ......" + velocity);
 
 			Rocket.giveVelocity(velocity);
 			velocity.clear();
@@ -30,11 +28,10 @@ public class Propulsor {
 	public static int aceelerate(int powerMax, int powerReal) {
 		powerPropulsor = powerReal;
 		if (powerPropulsor >= 0 && powerPropulsor <= powerMax) {
-//				System.out.println("Potencia actual " + powerPropulsor);
 			powerPropulsor = powerReal;
 
 		} else {
-			System.out.println("no more power ....... no power" + powerMax);
+//			System.out.println("no more power ....... no power" + powerMax);
 			powerPropulsor = powerMax;
 		}
 
@@ -43,13 +40,13 @@ public class Propulsor {
 	}
 
 	public int brake(int powerMax) {
-			if (powerMax >= 10) {
-				powerPropulsor = powerMax - 10;
-				 System.out.println("Potencia actual " + powerPropulsor);
-			} else {
-				 System.out.println("ha llegado a la potencia minima ???????????????" + powerPropulsor );
-				 powerPropulsor = 0;
-			}
+		if (powerMax >= 10) {
+			powerPropulsor = powerMax - 10;
+//			System.out.println("Potencia actual " + powerPropulsor);
+		} else {
+//			System.out.println("ha llegado a la potencia minima ???????????????" + powerPropulsor);
+			powerPropulsor = 0;
+		}
 
 		return powerPropulsor;
 

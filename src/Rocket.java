@@ -23,9 +23,7 @@ public class Rocket {
 			power = power + i;
 			powerActually2 = (float) Math.sqrt(power);
 		}
-		System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2);
-
-//		return powerActually2;
+//		System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2);
 
 	}
 
