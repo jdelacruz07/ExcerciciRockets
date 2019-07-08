@@ -9,7 +9,8 @@ public class Main {
 	static ArrayList<Integer> velocityBackup4 = new ArrayList();
 	static ArrayList<Integer> velocityBackup5 = new ArrayList();
 	static ArrayList<Integer> velocityBackup6 = new ArrayList();
-	static ArrayList<Integer> velocityBackupTotal = new ArrayList();
+
+	static ArrayList<Integer> velocityBackupTotal  = new ArrayList();
 	static ArrayList<Integer> velocityBackupTotal2 = new ArrayList();
 	static int times;
 	static Scanner sc = new Scanner(System.in);
@@ -20,7 +21,16 @@ public class Main {
 		// TODO Auto-generated method stub
 		Rocket rocket = new Rocket();
 		ArrayList<Rocket> rockets = new ArrayList<>();
-
+		velocityBackupTotal.add(0);
+		velocityBackupTotal.add(0);
+		velocityBackupTotal.add(0);
+		velocityBackupTotal2.add(0);
+		velocityBackupTotal2.add(0);
+		velocityBackupTotal2.add(0);
+		velocityBackupTotal2.add(0);
+		velocityBackupTotal2.add(0);
+		velocityBackupTotal2.add(0);
+		
 		String idRocket = "32WESSDS";
 		int numberPropulsor = 3;
 		int idPropulsor = 123456789;
@@ -106,13 +116,13 @@ public class Main {
 		System.out.println("Entrada Rocket1 --> "+ velocityBackupTotal);
 		System.out.println("Cuantas veces quieres acelerar Rocket One? ");
 		times = sc.nextInt();
-
+		System.out.println("errrroooooooooooorr" + velocityBackupTotal);
 		(new Thread(new HelloRunnable())).start();
 		Runnable r1 = new Runnable() {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup = Propulsor.timesAccelerate(power1[0], times);
+				velocityBackup = Propulsor.timesAccelerate(power1[0], times, velocityBackupTotal.get(0));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			} 
 		};
@@ -120,7 +130,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup2 = Propulsor.timesAccelerate(power1[1], times);
+				velocityBackup2 = Propulsor.timesAccelerate(power1[1], times, velocityBackupTotal.get(1));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -128,7 +138,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup3 = Propulsor.timesAccelerate(power1[2], times);
+				velocityBackup3 = Propulsor.timesAccelerate(power1[2], times, velocityBackupTotal.get(2));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -161,7 +171,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup = Propulsor.timesAccelerate(power2[0], times);
+				velocityBackup = Propulsor.timesAccelerate(power2[0], times, velocityBackupTotal2.get(0));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -169,7 +179,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup2 = Propulsor.timesAccelerate(power2[1], times);
+				velocityBackup2 = Propulsor.timesAccelerate(power2[1], times, velocityBackupTotal2.get(1));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -177,7 +187,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup3 = Propulsor.timesAccelerate(power2[2], times);
+				velocityBackup3 = Propulsor.timesAccelerate(power2[2], times, velocityBackupTotal2.get(2));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -185,7 +195,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup4 = Propulsor.timesAccelerate(power2[3], times);
+				velocityBackup4 = Propulsor.timesAccelerate(power2[3], times, velocityBackupTotal2.get(3));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -193,7 +203,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup5 = Propulsor.timesAccelerate(power2[4], times);
+				velocityBackup5 = Propulsor.timesAccelerate(power2[4], times, velocityBackupTotal2.get(4));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -201,7 +211,7 @@ public class Main {
 			@Override
 			public void run() {
 				// perform some work inside the thread
-				velocityBackup6 = Propulsor.timesAccelerate(power2[5], times);
+				velocityBackup6 = Propulsor.timesAccelerate(power2[5], times, velocityBackupTotal2.get(5));
 				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
 			}
 		};
@@ -218,9 +228,9 @@ public class Main {
 		t5.start();
 		t6.start();
 
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 
-		velocityBackupTotal2.clear();
+		velocityBackupTotal.clear();
 		velocityBackupTotal2.addAll(velocityBackup);
 		velocityBackupTotal2.addAll(velocityBackup2);
 		velocityBackupTotal2.addAll(velocityBackup3);
