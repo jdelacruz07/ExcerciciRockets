@@ -46,9 +46,9 @@ public class Propulsor {
 	public int brake(int powerMax) {
 			if (powerMax >= 10) {
 				powerPropulsor = powerMax - 10;
-				 System.out.println("Potencia actual " + powerPropulsor);
+//				 System.out.println("Potencia actual " + powerPropulsor);
 			} else {
-				 System.out.println("ha llegado a la potencia minima ???????????????" + powerPropulsor );
+//				 System.out.println("ha llegado a la potencia minima ???????????????" + powerPropulsor );
 				 powerPropulsor = 0;
 			}
 
