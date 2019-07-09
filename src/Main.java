@@ -11,11 +11,14 @@ public class Main {
 	static ArrayList<Integer> velocityBackup5;
 	static ArrayList<Integer> velocityBackup6;
 	static int times;
-	static ArrayList<Integer> velocityBackupTotal = new ArrayList();
+	static ArrayList<Integer> velocityBackupTotal= new ArrayList();
 	static ArrayList<Integer> velocityBackupTotal2 = new ArrayList();
 	static Scanner sc = new Scanner(System.in);
 	static int[] power1 = { 10, 30, 80 };
 	static int[] power2 = { 30, 40, 50, 50, 30, 10 };
+	static int powerMax1;
+	static int powerMax2;
+	static int powerMax3;
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
@@ -124,13 +127,14 @@ public class Main {
 		t2.start();
 		t3.start();
 
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 
 		velocityBackupTotal.clear();
 		velocityBackupTotal.add(velocityBackup.get(0));
 		velocityBackupTotal.add(velocityBackup2.get(0));
 		velocityBackupTotal.add(velocityBackup3.get(0));
 		System.out.println("Salida Rocket One " + velocityBackupTotal);
+		System.out.println("Salida Velocidad Rocket 2 --> " + Rocket.giveVelocity(velocityBackupTotal));
 
 	}
 
@@ -212,7 +216,7 @@ public class Main {
 		t5.start();
 		t6.start();
 
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 
 		velocityBackupTotal2.clear();
 		velocityBackupTotal2.add(velocityBackup.get(0));
@@ -222,31 +226,88 @@ public class Main {
 		velocityBackupTotal2.add(velocityBackup5.get(0));
 		velocityBackupTotal2.add(velocityBackup6.get(0));
 		System.out.println("Salida Rocket 2 --> " + velocityBackupTotal2);
+		System.out.println("Salida Velocidad Rocket 2 --> " + Rocket.giveVelocity(velocityBackupTotal2));
 	}
 
-	private static void brakeRocket() {
+	private static void brakeRocket() throws InterruptedException {
 		// TODO Auto-generated method stub
 		System.out.println("///////                  FRENA                       ////////////////////////////");
 		Propulsor propulsor = new Propulsor();
 		System.out.println("Entrada " + velocityBackupTotal);
 		System.out.println("Cuantas veces quieres desacelerar?");
 		times = sc.nextInt();
-
+		powerMax1 = velocityBackupTotal.get(0);
+		powerMax2 = velocityBackupTotal.get(1);
+		powerMax3 = velocityBackupTotal.get(2);
+		velocityBackupTotal.clear();
 		ArrayList<Integer> velocityBackup2 = new ArrayList<>();
+		ArrayList<Integer> velocityBrake = new ArrayList<>();
 
-		for (int i = 0; i < times; i++) {
-			for (int powerMax : velocityBackupTotal) {
-				int powerActually = propulsor.brake(powerMax);
-				velocityBackup2.add(powerActually);
+		(new Thread(new HelloRunnable())).start();
+		Runnable r1 = new Runnable() {
+			@Override
+			public void run() {
+				// perform some work inside the thread
+				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
+
+				int powerActually = 0;
+				for (int i = 0; i < times; i++) {
+					powerActually = propulsor.brake(powerMax1);
+					powerMax1 = powerActually;
+				}
+				velocityBackupTotal.add(powerActually);
+				System.out.println("Salida desaceleracion 1 "+ powerActually);
+				
 			}
-			System.out.println("Salida " + velocityBackup2);
-			velocityBackupTotal.clear();
-			velocityBackupTotal.addAll(velocityBackup2);
-			velocityBackup2.clear();
-		}
 
-//		float velocidad = (float) Math.sqrt(10 + 30 + 80);
-//		System.out.println(velocidad);
+		};
+		Runnable r2 = new Runnable() {
+			@Override
+			public void run() {
+				// perform some work inside the thread
+				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
+
+				int powerActually = 0;
+				for (int i = 0; i < times; i++) {
+					powerActually = propulsor.brake(powerMax2);
+					powerMax2 = powerActually;
+				}
+				velocityBackupTotal.add(powerActually);
+				System.out.println("Salida desaceleracion 2 "+ velocityBackupTotal );
+			}
+		};
+		Runnable r3 = new Runnable() {
+			@Override
+			public void run() {
+				// perform some work inside the thread
+				System.out.println("Hello from " + Thread.currentThread().getName() + " NOT USING LAMBDA");
+
+				int powerActually = 0;
+				for (int i = 0; i < times; i++) {
+					powerActually = propulsor.brake(powerMax3);
+					powerMax3 = powerActually;
+				}
+				velocityBackupTotal.add(powerActually);
+				System.out.println("Salida desaceleracion 3 "+ velocityBackupTotal );
+			}
+		};
+
+		Thread t1 = new Thread(r1, "Thread t1");
+		Thread t2 = new Thread(r2, "Thread t2");
+		Thread t3 = new Thread(r3, "Thread t3");
+		t1.start();
+		t2.start();
+		t3.start();
+
+		Thread.sleep(1000);
+
+//		velocityBackupTotal.clear();
+//		velocityBackupTotal.add(velocityBackup2.get(0));
+//		velocityBackupTotal.add(velocityBackup2.get(0));
+//		velocityBackupTotal.add(velocityBackup2.get(0));
+		
+		System.out.println("Salida Rocket 1 --> " + velocityBackupTotal);
+		System.out.println("Salida de desaceleracion Rocket 1 --> " + Rocket.giveVelocity(velocityBackupTotal));
 
 	}
 

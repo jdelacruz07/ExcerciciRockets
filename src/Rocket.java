@@ -15,7 +15,7 @@ public class Rocket {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void giveVelocity(ArrayList<Integer> velocity) {
+	public static float giveVelocity(ArrayList<Integer> velocity) {
 
 		int power = 0;
 		float powerActually2 = 0;
@@ -23,7 +23,8 @@ public class Rocket {
 			power = power + i;
 			powerActually2 = (float) Math.sqrt(power);
 		}
-//		System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2);
+		System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2);
+		return powerActually2;
 
 	}
 
