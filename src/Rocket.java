@@ -21,7 +21,7 @@ public class Rocket {
 		float powerActually2 = 0;
 		for (int i : velocity) {
 			power = power + i;
-			powerActually2 = (float) Math.sqrt(power);
+			powerActually2 = (float) Math.sqrt(power)*100;
 		}
 		System.out.println("Velocidad xxxxxxxxxxxxxxxxxx " + powerActually2);
 		return powerActually2;

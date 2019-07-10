@@ -300,11 +300,6 @@ public class Main {
 		t3.start();
 
 		Thread.sleep(1000);
-
-//		velocityBackupTotal.clear();
-//		velocityBackupTotal.add(velocityBackup2.get(0));
-//		velocityBackupTotal.add(velocityBackup2.get(0));
-//		velocityBackupTotal.add(velocityBackup2.get(0));
 		
 		System.out.println("Salida Rocket 1 --> " + velocityBackupTotal);
 		System.out.println("Salida de desaceleracion Rocket 1 --> " + Rocket.giveVelocity(velocityBackupTotal));
